@@ -5,19 +5,34 @@
 
 $(document).ready(function(){
 
-  $(window).resize(function()
-  {
-    if($(window).width() >= 765){
-      $(".sidebar #nav").slideDown(350);
-    }
-    else{
-      $(".sidebar #nav").slideUp(350); 
+  if ($(window).width() >= 750) {
+    $(".sidebar").addClass("onside inactive")
+    .children("#nav").addClass("onside inactive");
+  }
+
+  $(window).resize(function() {
+    if($(window).width() >= 750) {
+      $(".sidebar #nav").css("display","block");
+      $(".sidebar").addClass("onside inactive")
+      .children("#nav").addClass("onside inactive");
+    } else {
+      $(".sidebar #nav").css("display","none");
     }
   });
 
-
-  $(".sidebar").delegate("#nav.active li.has_sub a","click",function(e){
-      e.preventDefault();   
+  // controls the sub menus of the collapsed side bar
+  $(".sidebar").delegate("#nav.onside li.has_sub","mouseenter",function(e) {
+    if (!$(this).parents(".sidebar.onside").hasClass("active")) {
+      $(this).children("ul").css("display","block");
+    }
+  }).delegate("#nav li.has_sub","mouseleave",function(e) {
+    if (!$(this).parents(".sidebar.onside").hasClass("active")) {    
+      $(this).children("ul").css("display","none"); 
+    }
+  });
+  
+  $(".sidebar").delegate("#nav.active li.has_sub a","click",function(e) {
+      e.preventDefault();
 
       if(!$(this).hasClass("subdrop")) {
         // hide any open menus and remove all other classes
@@ -35,11 +50,15 @@ $(document).ready(function(){
       } 
   });
 
+  // switch sidebar between active and inactive mode
   $(".sidebar-switch a").on("click",function(e){
     e.preventDefault();
+    var $this = $(this);
 
-    $(this).parent(".sidebar-switch").next("#nav")
-    .toggleClass("active").parent(".sidebar").toggleClass("active")
+    $this.parents(".sidebar.onside").children("#nav").find("ul")
+    .css("display","none").prev(".subdrop").removeClass("subdrop");
+    $this.parent(".sidebar-switch").next("#nav").toggleClass("active inactive")
+    .parent(".sidebar.onside").toggleClass("active inactive")
     .next(".mainbar").toggleClass("with-sidebar-active");
   })
 });
