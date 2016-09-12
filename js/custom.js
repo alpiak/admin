@@ -1,5 +1,6 @@
 /* JS */
 
+"use strict";
 
 /* Navigation */
 
