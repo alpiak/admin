@@ -1,0 +1,6 @@
+/* Styles for tables */
+
+table td {
+	word-break: break-all;
+	word-wrap: normal;
+}
