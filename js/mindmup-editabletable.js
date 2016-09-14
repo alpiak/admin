@@ -32,9 +32,8 @@ $.fn.editableTableWidget = function (options) {
 			showEditor = function (select) {
 				if (active.length) {
 					if (editor[0].tagName.toLowerCase() === "input" ||
-						editor[0].tagName.toLowerCase() === "textarea") {
-						editor.val(active.text());
-					} else if (editor[0].tagName.toLowerCase() === "select") {
+						editor[0].tagName.toLowerCase() === "textarea" ||
+						editor[0].tagName.toLowerCase() === "select") {
 						editor.val(active.text());
 					}
 					editor.removeClass('error')

@@ -1,0 +1,20 @@
+/* Styles for List page */
+
+table td {
+	word-break: break-all;
+	word-wrap: normal;
+}
+
+.modal-form-datetime {
+	position: relative;
+}
+
+.modal-form-datetime .add-on {
+	display: block;
+	position: absolute;
+	height: 34px;
+    width: 34px;
+    padding: 8px;
+	right: 0;
+	top: 0;
+}

@@ -211,10 +211,6 @@ form label{
 font-size:12px;
 }
 
-.form-horizontal .control-label {
-width: 90px;
-}
-
 .form-horizontal .controls {
 margin-left: 110px;
 }
