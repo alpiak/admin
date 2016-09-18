@@ -42,10 +42,8 @@ angular.module('app.list', [])
 					});
 					if (isLegal === true) {
 						$scope.$apply(function () {
-							$scope.active.activeItem =
-							$.extend({},$scope.active.activeCurrent);
-							$scope.items[$scope.active.activeCurrent.index - 1] =
-							$.extend({},$scope.active.activeCurrent);
+							$scope.items[$scope.active.activeItem.index - 1] =
+							$.extend({},$scope.active.activeItem);
 						});
 						$($element).modal('hide');
 					}
@@ -69,8 +67,7 @@ angular.module('app.list', [])
 	})
 	.controller('ListController', function($scope) {
 		$scope.active = {};
-		$scope.active.activeItem = {};
-		$scope.active.activeCurrent = {}; // bound to list form
+		$scope.active.activeItem = {}; // bound to list form
 		$scope.items = [
 			{
 				index: 1,
@@ -118,9 +115,13 @@ angular.module('app.list', [])
 		];
 	})
 	.controller('TableController', function($scope) {
-		$scope.setActive = function(item) {
-			$scope.active.activeItem = item;
-			$scope.active.activeCurrent = $.extend({}, $scope.active.activeItem);
+		$scope.setActive = function (item) {
+			$scope.active.activeItem = $.extend({}, item);
+		}
+		$scope.removeItem = function (index) {
+			if (typeof index == "number" ) {
+				$scope.items.splice(index, 1);
+			}
 		}
 	})
 	.controller('FormController', function ($scope, typeMap) {

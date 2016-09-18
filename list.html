@@ -204,64 +204,49 @@
           <div class="row">
             <div class="col-md-12">
               <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-4">
-                      Picker1:
-                      <div class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-default">Left</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Right</button>
-                      </div>
+                <div class="panel-body form row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
-                    <div class="col-md-4">
-                      Picker2:
-                      <div class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-default">Left</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Right</button>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      Picker3:
-                      <div class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-default">Left</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Right</button>
-                      </div>
+                    <div class="form-group">
+                      <label for="select1">Email address</label>
+                      <select name="select1" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-4">
-                      Picker1:
-                      <div class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-default">Left</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Right</button>
-                      </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
-                    <div class="col-md-4">
-                      Picker2:
-                      <div class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-default">Left</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Right</button>
-                      </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
-                    <div class="col-md-4">
-                      Picker3:
-                      <div class="btn-group btn-group-sm">
-                        <button type="button" class="btn btn-default">Left</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Middle</button>
-                        <button type="button" class="btn btn-default">Right</button>
-                      </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="select1">Email address</label>
+                      <select name="select1" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                      </select>
                     </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </div>
+                    <button type="button" class="btn btn-primary pull-right"><i class="fa-filter"></i>Submit</button>
                   </div>
                 </div>
               </div>
@@ -300,9 +285,8 @@
                         <td>{{item.type}}</td>
                         <td><span class="label label-success">{{item.status}}</span></td>
                         <td>
-                          <button type="button" class="btn btn-xs btn-success"><i class="icon-ok"></i> </button>
                           <button ng-click="setActive(item)" type="button" class="btn btn-xs btn-warning" data-toggle="modal" open-list-form><i class="btn-form-edit icon-pencil"></i> </button>
-                          <button type="button" class="btn btn-xs btn-danger"><i class="icon-remove"></i> </button>                          
+                          <button ng-click="removeItem($index)" type="button" class="btn btn-xs btn-danger"><i class="icon-remove"></i> </button>                          
                         </td>
                       </tr>                                                       
                     </tbody>
@@ -351,136 +335,6 @@
 <!-- Scroll to top -->
 <span class="totop"><a href="#"><i class="icon-chevron-up"></i></a></span>
 
-<!-- Modal starts -->
-<div ng-controller="FormController" class="modal fade" id="list-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" list-form>
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <div class="padd">
-          <!-- Form starts.  -->
-           <form class="form-horizontal" role="form">
-          
-            <div class="form-group">
-              <label class="col-md-2 control-label">Name</label>
-              <div class="col-md-10">
-                <input ng-model="active.activeCurrent.name" type="text" class="form-control" placeholder="Name">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="col-md-2 control-label">Location</label>
-              <div class="col-md-10">
-                <select ng-model="active.activeCurrent.location" class="form-control">
-                  <option ng-repeat="option in typeMap[2].values">{{option}}</option>
-                </select>
-              </div>
-            </div>
-          
-            <div class="form-group">
-              <label class="col-md-2 control-label">Date</label>
-              <div class="col-md-10">
-                <div class="input-append date modal-form-datetime">
-                  <input ng-model="active.activeCurrent.date" size="16" type="text" class="form-control" placeholder="Date" readonly>
-                  <span class="add-on"><i class="icon-th"></i></span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="col-md-2 control-label">Password</label>
-              <div class="col-md-10">
-                <input type="password" class="form-control" placeholder="Password Box">
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label class="col-md-2 control-label">Textarea</label>
-              <div class="col-md-10">
-                <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
-              </div>
-            </div>    
-            
-            <div class="form-group">
-              <label class="col-md-2 control-label">Checkbox</label>
-              <div class="col-md-10">
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
-                </label>
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-                </label>
-                <label class="checkbox-inline">
-                  <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-                </label>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-md-2 control-label">Radio Box</label>
-              <div class="col-md-10">
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                    Option one is this and that&mdash;be sure to include why it's great
-                  </label>
-                </div>
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Option two can be something else and selecting it will deselect option one
-                  </label>
-                </div>
-              </div>
-            </div>   
-
-            <div class="form-group">
-              <label class="col-md-2 control-label">Select Box</label>
-              <div class="col-md-10">
-                <select multiple class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
-              </div>
-            </div>   
-
-            <div class="form-group">
-              <label class="col-md-2 control-label">CLEditor</label>
-              <div class="col-md-10">
-                <textarea class="cleditor" name="input"></textarea>
-              </div>
-            </div>                                 
-            
-                <hr />
-            <div class="form-group">
-              <div class="col-md-offset-1 col-md-11">
-                <button type="button" class="btn btn-default">Default</button>
-                <button type="button" class="btn btn-primary">Primary</button>
-                <button type="button" class="btn btn-success">Success</button>
-                <button type="button" class="btn btn-info">Info</button>
-                <button type="button" class="btn btn-warning">Warning</button>
-                <button type="button" class="btn btn-danger">Danger</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="submit btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal ends -->
-
 <!-- JS -->
 <script src="js/jquery.js"></script> <!-- jQuery -->
 <script src="js/bootstrap.js"></script> <!-- Bootstrap -->
@@ -490,20 +344,18 @@
 <script src="js/app.js"></script> <!-- AngularJS main file -->
 <script src="js/custom.js"></script> <!-- Custom codes -->
 <script>
-$(document).ready(function () {
-    $('.cleditor').cleditor();
-    $('.cleditorToolbar').height(54);
-    $(".modal-form-datetime").datetimepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayBtn: true,
-        minView: 2,
-        pickerPosition: "bottom-left"
-    });
-    // $('.btn-form-edit').click(function () {
-    //   $('#list-form').clone().appendTo('body').modal();
-    // });
-});
+  $(document).ready(function () {
+          $('.cleditor').cleditor();
+          $('.cleditorToolbar').height(54);
+      $(".modal-form-datetime").datetimepicker({
+          format: "dd/mm/yyyy",
+          autoclose: true,
+          todayBtn: true,
+          minView: 2,
+          todayHighlight: true,
+          pickerPosition: "bottom-left"
+      });
+  });
 </script>
 
 <!-- jQuery Notification - Noty -->
@@ -517,6 +369,156 @@ $(document).ready(function () {
 <script src="js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
 <script src="js/bootstrap-switch.min.js"></script> <!-- Bootstrap Toggle -->
 <script src="js/filter.js"></script> <!-- Filter for support page -->
+
+<!-- Modal1 starts -->
+<div ng-controller="FormController" class="modal fade" id="list-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" list-form>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <!-- Form starts.  -->
+         <form class="form-horizontal" role="form">
+        
+          <div class="form-group">
+            <label class="col-md-2 control-label">Name</label>
+            <div class="col-md-10">
+              <input ng-model="active.activeItem.name" type="text" class="form-control" placeholder="Name">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-2 control-label">Location</label>
+            <div class="col-md-10">
+              <select ng-model="active.activeItem.location" class="form-control">
+                <option ng-repeat="option in typeMap[2].values">{{option}}</option>
+              </select>
+            </div>
+          </div>
+        
+          <div class="form-group">
+            <label class="col-md-2 control-label">Date</label>
+            <div class="col-md-10">
+              <div class="input-append date modal-form-datetime">
+                <input ng-model="active.activeItem.date" size="16" type="text" class="form-control" placeholder="Date" readonly>
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+              <input type="password" class="form-control" placeholder="Password Box">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-2 control-label">Textarea</label>
+            <div class="col-md-10">
+              <textarea class="form-control" rows="3" placeholder="Textarea"></textarea>
+            </div>
+          </div>    
+          
+          <div class="form-group">
+            <label class="col-md-2 control-label">Checkbox</label>
+            <div class="col-md-10">
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-2 control-label">Radio Box</label>
+            <div class="col-md-10">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                  Option one is this and that&mdash;be sure to include why it's great
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Option two can be something else and selecting it will deselect option one
+                </label>
+              </div>
+            </div>
+          </div>   
+
+          <div class="form-group">
+            <label class="col-md-2 control-label">Select Box</label>
+            <div class="col-md-10">
+              <select multiple class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>   
+
+          <div class="form-group">
+            <label class="col-md-2 control-label">CLEditor</label>
+            <div class="col-md-10">
+              <textarea class="cleditor" name="input"></textarea>
+            </div>
+          </div>                                 
+          
+              <hr />
+          <div class="form-group">
+            <div class="col-md-offset-1 col-md-11">
+              <button type="button" class="btn btn-default">Default</button>
+              <button type="button" class="btn btn-primary">Primary</button>
+              <button type="button" class="btn btn-success">Success</button>
+              <button type="button" class="btn btn-info">Info</button>
+              <button type="button" class="btn btn-warning">Warning</button>
+              <button type="button" class="btn btn-danger">Danger</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="submit btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal1 ends -->
+
+<!-- Modal2 starts -->
+<div ng-controller="FormController" class="modal fade" id="delete-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" list-form>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="padd">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="submit btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal2 ends -->
 
 </body>
 </html>
