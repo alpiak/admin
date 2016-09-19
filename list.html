@@ -201,17 +201,18 @@
               </form>
             </div>
           </div>
+          <br>
           <div class="row">
             <div class="col-md-12">
               <div class="panel panel-default">
                 <div class="panel-body form row">
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
+                      <label for="exampleInputEmail1">filter</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
                     <div class="form-group">
-                      <label for="select1">Email address</label>
+                      <label for="select1">address</label>
                       <select name="select1" class="form-control">
                         <option>1</option>
                         <option>2</option>
@@ -223,12 +224,12 @@
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
+                      <label for="exampleInputEmail1">选项</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      <label for="exampleInputEmail1">address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter...">
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -246,7 +247,7 @@
                       <label for="exampleInputEmail1">Email address</label>
                       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                     </div>
-                    <button type="button" class="btn btn-primary pull-right"><i class="fa-filter"></i>Submit</button>
+                    <button type="button" class="btn btn-primary pull-right"><i class="fa-filter"></i>提 交</button>
                   </div>
                 </div>
               </div>
@@ -283,10 +284,10 @@
                         <td>{{item.location}}</td>
                         <td>{{item.date}}</td>
                         <td>{{item.type}}</td>
-                        <td><span class="label label-success">{{item.status}}</span></td>
+                        <td><span class="label" ng-class="{'label-success': item.status === 'Active', 'label-danger': item.status === 'Banned'}">{{item.status}}</span></td>
                         <td>
-                          <button ng-click="setActive(item)" type="button" class="btn btn-xs btn-warning" data-toggle="modal" open-list-form><i class="btn-form-edit icon-pencil"></i> </button>
-                          <button ng-click="removeItem($index)" type="button" class="btn btn-xs btn-danger"><i class="icon-remove"></i> </button>                          
+                          <button ng-click="setActive(item, $index)" type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#list-form"><i class="btn-form-edit icon-pencil"></i> </button>
+                          <button ng-click="setActive(item, $index)" type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#delete-modal"><i class="icon-remove"></i> </button>                          
                         </td>
                       </tr>                                                       
                     </tbody>
@@ -371,7 +372,7 @@
 <script src="js/filter.js"></script> <!-- Filter for support page -->
 
 <!-- Modal1 starts -->
-<div ng-controller="FormController" class="modal fade" id="list-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" list-form>
+<div class="modal fade" id="list-form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" list-form>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -499,20 +500,42 @@
 <!-- Modal1 ends -->
 
 <!-- Modal2 starts -->
-<div ng-controller="FormController" class="modal fade" id="delete-dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" list-form>
+<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" delete-modal>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">确定删除</h4>
       </div>
       <div class="modal-body">
-        <div class="padd">
-        </div>
+        <p>确定删除以下内容？</p>
+        <br>
+        <table class="table table-condensed table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Date</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{active.activeItem.index}}</td>
+              <td>{{active.activeItem.name}}</td>
+              <td>{{active.activeItem.location}}</td>
+              <td>{{active.activeItem.date}}</td>
+              <td>{{active.activeItem.type}}</td>
+              <td><span class="label" ng-class="{'label-success': active.activeItem.status === 'Active', 'label-danger': active.activeItem.status === 'Banned'}">{{active.activeItem.status}}</span></td>
+            </tr>                                                       
+          </tbody>
+        </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="submit btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="submit btn btn-danger">删除</button>
       </div>
     </div>
   </div>
