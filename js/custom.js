@@ -5,19 +5,21 @@
 /* Navigation */
 
 $(document).ready(function(){
+  $(".sidebar").addClass("inactive")
+    .children("#nav").addClass("inactive");
 
   if ($(window).width() >= 750) {
-    $(".sidebar").addClass("onside inactive")
-    .children("#nav").addClass("onside inactive");
+    $(".sidebar").addClass("onside")
+    .children("#nav").addClass("onside");
   }
 
   $(window).resize(function() {
     if($(window).width() >= 750) {
-      $(".sidebar #nav").css("display","block");
-      $(".sidebar").addClass("onside inactive")
-      .children("#nav").addClass("onside inactive");
+      $(".sidebar").addClass("onside")
+      .children("#nav").addClass("onside").css("display","block");
     } else {
-      $(".sidebar #nav").css("display","none");
+      $(".sidebar").removeClass("onside")
+      .children("#nav").css("display","none").removeClass("onside");
     }
   });
 

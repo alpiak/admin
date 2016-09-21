@@ -43,7 +43,7 @@ angular.module('app.list', [])
 					if (isLegal === true) {
 						$scope.$apply(function () {
 							$scope.items[$scope.active.activeItem.$index] =
-							$.extend({},$scope.active.activeItem);
+							$.extend(true, {}, $scope.active.activeItem);
 						});
 						$($element).modal('hide');
 						noty({text: '<strong>修改成功</strong>',layout:'topRight',type:'success',closeWith:['click','button'],timeout:5000});
@@ -245,7 +245,7 @@ angular.module('app.list', [])
 	})
 	.controller('TableController', function($scope) {
 		$scope.setActive = function (item, $index) {
-			var that = $scope.active.activeItem = $.extend({}, item);
+			var that = $scope.active.activeItem = $.extend(true, {}, item);
 
 			that.$index = $index;
 		};
