@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <!-- Title and other stuffs -->
+    <title>Dashboard - MacAdmin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+
+    <!-- Stylesheets -->
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <!-- Font awesome icon -->
+    <link rel="stylesheet" href="style/font-awesome.css">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="style/jquery-ui.css">
+    <!-- Date picker -->
+    <link rel="stylesheet" href="style/bootstrap-datetimepicker.min.css">
+    <!-- CLEditor -->
+    <link rel="stylesheet" href="style/jquery.cleditor.css">
+    <!-- Bootstrap toggle -->
+    <link rel="stylesheet" href="style/bootstrap-switch.css">
+    <!-- Main stylesheet -->
+    <link href="style/style.css" rel="stylesheet">
+    <!-- Widgets stylesheet -->
+    <link href="style/widgets.css" rel="stylesheet">
+    <!-- Basic widget stylesheet -->
+    <link href="style/widget.css" rel="stylesheet">
+    <!-- List page stylesheet -->
+    <link href="style/list.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon/favicon.png">
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+        System.import('app').catch(function(err){ console.error(err); });
+    </script>
+</head>
+<!-- 3. Display the application -->
+<body>
+    <app></app>
+
+    <!-- JS -->
+    <script src="js/jquery.js"></script> <!-- jQuery -->
+    <script src="js/bootstrap.js"></script> <!-- Bootstrap -->
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script> <!-- jQuery UI -->
+    <script src="js/jquery.cleditor.min.js"></script> <!-- CLEditor -->
+    <script src="js/custom.js"></script> <!-- Custom codes -->
+    <script>
+        $(document).ready(function () {
+            $('.cleditor').cleditor();
+            $('.cleditorToolbar').height(54);
+            $(".modal-form-datetime").datetimepicker({
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                todayBtn: true,
+                minView: 2,
+                todayHighlight: true,
+                pickerPosition: "bottom-left"
+            });
+        });
+    </script>
+
+    <!-- jQuery Notification - Noty -->
+    <script src="js/jquery.noty.js"></script> <!-- jQuery Notify -->
+    <script src="js/themes/default.js"></script> <!-- jQuery Notify -->
+    <script src="js/layouts/bottom.js"></script> <!-- jQuery Notify -->
+    <script src="js/layouts/topRight.js"></script> <!-- jQuery Notify -->
+    <script src="js/layouts/top.js"></script> <!-- jQuery Notify -->
+    <!-- jQuery Notification ends -->
+
+    <script src="js/bootstrap-datetimepicker.min.js"></script> <!-- Date picker -->
+    <script src="js/bootstrap-switch.min.js"></script> <!-- Bootstrap Toggle -->
+    <script src="js/filter.js"></script> <!-- Filter for support page -->
+</body>
+</html>
