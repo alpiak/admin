@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var SidebarComponent = (function () {
+    function SidebarComponent() {
     }
-    AppComponent = __decorate([
+    SidebarComponent = __decorate([
         core_1.Component({
-            selector: 'app',
-            templateUrl: '/template/app.component.html'
+            selector: 'div.sidebar',
+            templateUrl: '/template/sidebar.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], SidebarComponent);
+    return SidebarComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.SidebarComponent = SidebarComponent;
+//# sourceMappingURL=sidebar.component.js.map
